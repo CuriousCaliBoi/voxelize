@@ -12,7 +12,9 @@
   <img alt="Discord Server" src="https://img.shields.io/discord/1229328337713762355?label=Discord&logo=Discord&style=for-the-badge">
   </a>
   <img src="https://img.shields.io/npm/v/@voxelize/core?logo=npm&style=for-the-badge">
-  <img src="https://img.shields.io/crates/v/voxelize?style=for-the-badge"/>
+  <img src="https://img.shields.io/crates/v/voxelize?style=for-the-badge">
+  <img alt="License" src="https://img.shields.io/github/license/shaoruu/voxelize?style=for-the-badge">
+  <img alt="GitHub stars" src="https://img.shields.io/github/stars/shaoruu/voxelize?style=for-the-badge">
 </p>
 
 <a href="https://shaoruu.io">
@@ -58,6 +60,10 @@ Checkout the Voxelize documentations here:
 
 - [Backend](https://docs.rs/voxelize/0.8.11/voxelize/index.html)
 - [Frontend](https://docs.voxelize.io/tutorials/intro/what-is-voxelize)
+
+## Contributing
+
+We welcome contributions! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for development setup and guidelines.
 
 ## Development
 
