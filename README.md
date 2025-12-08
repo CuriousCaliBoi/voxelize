@@ -13,6 +13,12 @@
   </a>
   <img src="https://img.shields.io/npm/v/@voxelize/core?logo=npm&style=for-the-badge">
   <img src="https://img.shields.io/crates/v/voxelize?style=for-the-badge"/>
+  <a href="https://github.com/shaoruu/voxelize/blob/main/LICENSE">
+    <img src="https://img.shields.io/badge/license-MIT-blue.svg?style=for-the-badge" alt="License">
+  </a>
+  <a href="https://github.com/shaoruu/voxelize">
+    <img src="https://img.shields.io/github/stars/shaoruu/voxelize?style=for-the-badge" alt="GitHub stars">
+  </a>
 </p>
 
 <a href="https://shaoruu.io">
@@ -58,6 +64,10 @@ Checkout the Voxelize documentations here:
 
 - [Backend](https://docs.rs/voxelize/0.8.11/voxelize/index.html)
 - [Frontend](https://docs.voxelize.io/tutorials/intro/what-is-voxelize)
+
+## Contributing
+
+We welcome contributions! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
 
 ## Development
 
