@@ -9,10 +9,29 @@
 
 <p align="center">
   <a href="https://discord.gg/9483RZtWVU">
-  <img alt="Discord Server" src="https://img.shields.io/discord/1229328337713762355?label=Discord&logo=Discord&style=for-the-badge">
+    <img alt="Discord Server" src="https://img.shields.io/discord/1229328337713762355?label=Discord&logo=Discord&style=for-the-badge">
   </a>
-  <img src="https://img.shields.io/npm/v/@voxelize/core?logo=npm&style=for-the-badge">
-  <img src="https://img.shields.io/crates/v/voxelize?style=for-the-badge"/>
+  <a href="https://www.npmjs.com/package/@voxelize/core">
+    <img src="https://img.shields.io/npm/v/@voxelize/core?logo=npm&style=for-the-badge" alt="npm version">
+  </a>
+  <a href="https://crates.io/crates/voxelize">
+    <img src="https://img.shields.io/crates/v/voxelize?style=for-the-badge" alt="crates.io version">
+  </a>
+</p>
+
+<p align="center">
+  <a href="https://github.com/voxelize/voxelize/actions">
+    <img src="https://img.shields.io/github/actions/workflow/status/voxelize/voxelize/ci.yml?branch=main&style=flat-square&label=CI" alt="CI Status">
+  </a>
+  <a href="https://docs.voxelize.io">
+    <img src="https://img.shields.io/badge/docs-voxelize.io-blue?style=flat-square" alt="Documentation">
+  </a>
+  <a href="https://github.com/voxelize/voxelize/blob/main/LICENSE">
+    <img src="https://img.shields.io/github/license/voxelize/voxelize?style=flat-square" alt="License">
+  </a>
+  <a href="https://github.com/voxelize/voxelize/stargazers">
+    <img src="https://img.shields.io/github/stars/voxelize/voxelize?style=flat-square" alt="GitHub Stars">
+  </a>
 </p>
 
 <a href="https://shaoruu.io">

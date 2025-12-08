@@ -1,6 +1,7 @@
 export * from "../core/world/clouds";
 export * from "../core/world/sky";
 export * from "./arm";
+export * from "./audio";
 export * from "./arrow";
 export * from "./canvas-box";
 export * from "./character";
@@ -18,5 +19,6 @@ export * from "./setWorkerInterval";
 export * from "./shadows";
 export * from "./shared-worker-pool";
 export * from "./sprite-text";
+export * from "./particles";
 export * from "./voxel-interact";
 export * from "./worker-pool";
