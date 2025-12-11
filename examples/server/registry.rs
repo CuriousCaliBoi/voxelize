@@ -141,6 +141,10 @@ pub fn setup_registry() -> Registry {
                 aabbs: vec![green_stone_base_aabb],
                 faces: green_stone_base_faces.to_vec(),
                 is_transparent: [true, true, true, true, true, true],
+                is_passable: None,
+                red_light_level: None,
+                green_light_level: None,
+                blue_light_level: None,
             },
             BlockConditionalPart {
                 rule: BlockRule::Combination {
@@ -169,6 +173,10 @@ pub fn setup_registry() -> Registry {
                 aabbs: vec![green_stone_pos_100_aabb],
                 faces: green_stone_pos_100_faces.to_vec(),
                 is_transparent: [true, true, true, true, true, true],
+                is_passable: None,
+                red_light_level: None,
+                green_light_level: None,
+                blue_light_level: None,
             },
             BlockConditionalPart {
                 rule: BlockRule::Combination {
@@ -197,6 +205,10 @@ pub fn setup_registry() -> Registry {
                 aabbs: vec![green_stone_neg_100_aabb],
                 faces: green_stone_neg_100_faces.to_vec(),
                 is_transparent: [true, true, true, true, true, true],
+                is_passable: None,
+                red_light_level: None,
+                green_light_level: None,
+                blue_light_level: None,
             },
             BlockConditionalPart {
                 rule: BlockRule::Combination {
@@ -225,6 +237,10 @@ pub fn setup_registry() -> Registry {
                 aabbs: vec![green_stone_pos_001_aabb],
                 faces: green_stone_pos_001_faces.to_vec(),
                 is_transparent: [true, true, true, true, true, true],
+                is_passable: None,
+                red_light_level: None,
+                green_light_level: None,
+                blue_light_level: None,
             },
             BlockConditionalPart {
                 rule: BlockRule::Combination {
@@ -253,6 +269,10 @@ pub fn setup_registry() -> Registry {
                 aabbs: vec![green_stone_neg_001_aabb],
                 faces: green_stone_neg_001_faces.to_vec(),
                 is_transparent: [true, true, true, true, true, true],
+                is_passable: None,
+                red_light_level: None,
+                green_light_level: None,
+                blue_light_level: None,
             },
         ],
     };
@@ -406,6 +426,10 @@ pub fn setup_registry() -> Registry {
                             .independent_at(SIX_FACES_PY)
                             .to_vec(),
                         is_transparent: [true, true, true, true, true, true],
+                        is_passable: None,
+                        red_light_level: None,
+                        green_light_level: None,
+                        blue_light_level: None,
                     },
                     // You can add more BlockConditionalPart here as needed
                 ],
