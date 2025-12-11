@@ -535,10 +535,14 @@ impl Actor for Server {
 
     fn started(&mut self, ctx: &mut Self::Context) {
         // Set up a recurring task to tick all worlds
-        ctx.run_interval(Duration::from_millis(self.interval), |act, _| {
-            for world in act.worlds.values() {
-                world.do_send(Tick);
-            }
+        // Use run_later with a small delay to ensure we're in the runtime context
+        let interval = self.interval;
+        ctx.run_later(Duration::from_millis(10), move |act, ctx| {
+            ctx.run_interval(Duration::from_millis(interval), move |act, _| {
+                for world in act.worlds.values() {
+                    world.do_send(Tick);
+                }
+            });
         });
     }
 }
