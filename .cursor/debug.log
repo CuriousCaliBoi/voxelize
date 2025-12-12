@@ -1,0 +1,14 @@
+{"sessionId":"debug-session","runId":"run1","hypothesisId":"A","location":"lib.rs:100","message":"Voxelize::run entry","data":{"step":"prepare_start"},"timestamp":1765557031127}
+{"sessionId":"debug-session","runId":"run1","hypothesisId":"A","location":"lib.rs:102","message":"After prepare","data":{"step":"after_prepare"},"timestamp":1765557031127}
+{"sessionId":"debug-session","runId":"run1","hypothesisId":"A","location":"lib.rs:103","message":"After preload","data":{"step":"after_preload"},"timestamp":1765557032199}
+{"sessionId":"debug-session","runId":"run1","hypothesisId":"A","location":"lib.rs:110","message":"Before server.start()","data":{"step":"before_start","port":4000},"timestamp":1765557032199}
+{"sessionId":"debug-session","runId":"run1","hypothesisId":"A","location":"lib.rs:110","message":"After server.start()","data":{"step":"after_start"},"timestamp":1765557032199}
+{"sessionId":"debug-session","runId":"run1","hypothesisId":"B","location":"lib.rs:138","message":"Before bind attempt","data":{"step":"before_bind","port":4000},"timestamp":1765557032201}
+{"sessionId":"debug-session","runId":"run1","hypothesisId":"B","location":"lib.rs:139","message":"Bind failed","data":{"step":"bind_failed","error_kind":"AddrInUse","is_addrinuse":true},"timestamp":1765557032201}
+{"sessionId":"debug-session","runId":"run1","hypothesisId":"C","location":"server/mod.rs:536","message":"Server::started called","data":{"step":"started_called","interval":16},"timestamp":1765557032201}
+{"sessionId":"debug-session","runId":"run1","hypothesisId":"C","location":"server/mod.rs:540","message":"Before run_later","data":{"step":"before_run_later"},"timestamp":1765557032201}
+{"sessionId":"debug-session","runId":"post-fix","hypothesisId":"A","location":"lib.rs:100","message":"Voxelize::run entry","data":{"step":"prepare_start"},"timestamp":1765557107866}
+{"sessionId":"debug-session","runId":"post-fix","hypothesisId":"A","location":"lib.rs:102","message":"After prepare","data":{"step":"after_prepare"},"timestamp":1765557107866}
+{"sessionId":"debug-session","runId":"post-fix","hypothesisId":"A","location":"lib.rs:103","message":"After preload","data":{"step":"after_preload"},"timestamp":1765557108784}
+{"sessionId":"debug-session","runId":"post-fix","hypothesisId":"B","location":"lib.rs:138","message":"Before bind attempt","data":{"step":"before_bind","port":4000},"timestamp":1765557108785}
+{"sessionId":"debug-session","runId":"post-fix","hypothesisId":"B","location":"lib.rs:139","message":"Bind failed","data":{"step":"bind_failed","error_kind":"AddrInUse","is_addrinuse":true},"timestamp":1765557108785}

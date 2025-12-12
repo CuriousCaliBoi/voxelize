@@ -73,10 +73,10 @@ impl<'a> System<'a> for ChunkSendingSystem {
             } else {
                 let updated_levels: Vec<u32> = chunk.updated_levels.drain().collect();
 
-                if !updated_levels.is_empty() {
-                    let min_level = *updated_levels.iter().min().unwrap();
-                    let max_level = *updated_levels.iter().max().unwrap();
-                    let mesh_model = chunk.to_model(true, false, min_level..(max_level + 1));
+                // Send a separate mesh update for each level that was actually updated
+                // This ensures we only send meshes for levels that changed, avoiding stale data
+                for level in &updated_levels {
+                    let mesh_model = chunk.to_model(true, false, *level..(*level + 1));
 
                     for client_id in &interested_clients {
                         client_update_mesh
