@@ -15,6 +15,8 @@ use actix_web::{
 use actix_web_actors::ws;
 use hashbrown::HashMap;
 use log::{info, warn};
+use serde_json::json;
+use std::sync::{Arc, Mutex};
 
 pub use common::*;
 pub use libs::*;
@@ -30,10 +32,17 @@ struct Config {
 async fn ws_route(
     req: HttpRequest,
     stream: web::Payload,
-    srv: web::Data<Addr<Server>>,
+    srv: web::Data<Arc<Mutex<Option<Addr<Server>>>>>,
     secret: web::Data<Option<String>>,
     options: Query<HashMap<String, String>>,
 ) -> Result<HttpResponse, Error> {
+    let server_addr = srv.lock().unwrap().clone().ok_or_else(|| {
+        Error::from(std::io::Error::new(
+            std::io::ErrorKind::NotConnected,
+            "Server actor not initialized",
+        ))
+    })?;
+
     if !secret.is_none() {
         info!("Secret: {:?}", secret);
         let error = std::io::Error::new(std::io::ErrorKind::PermissionDenied, "wrong secret!");
@@ -69,7 +78,7 @@ async fn ws_route(
             id,
             name: None,
             is_transport,
-            addr: srv.get_ref().clone(),
+            addr: server_addr,
         },
         &req,
         stream,
@@ -86,8 +95,14 @@ async fn index(path: web::Data<Config>) -> Result<NamedFile> {
     })?)
 }
 
-async fn info(server: web::Data<Addr<Server>>) -> Result<HttpResponse> {
-    let info = server.send(Info).await.unwrap();
+async fn info(server: web::Data<Arc<Mutex<Option<Addr<Server>>>>>) -> Result<HttpResponse> {
+    let server_addr = match server.lock().unwrap().clone() {
+        Some(addr) => addr,
+        None => {
+            return Ok(HttpResponse::ServiceUnavailable().json(json!({"error": "Server actor not initialized"})));
+        }
+    };
+    let info = server_addr.send(Info).await.unwrap();
     Ok(HttpResponse::Ok().json(info))
 }
 
@@ -107,21 +122,24 @@ impl Voxelize {
         let serve = server.serve.to_owned();
         let secret = server.secret.to_owned();
 
-        let server_addr = server.start();
+        // Use shared state for server_addr that will be set after bind succeeds
+        let server_addr_shared: Arc<Mutex<Option<Addr<Server>>>> = Arc::new(Mutex::new(None));
 
         if serve.is_empty() {
             info!("Attempting to serve static folder: {}", serve);
         }
 
+        let server_addr_for_http = server_addr_shared.clone();
         let srv = HttpServer::new(move || {
             let serve = serve.to_owned();
             let secret = secret.to_owned();
             let cors = Cors::permissive();
+            let server_addr_shared = server_addr_for_http.clone();
 
             let app = App::new()
                 .wrap(cors)
                 .app_data(web::Data::new(secret))
-                .app_data(web::Data::new(server_addr.clone()))
+                .app_data(web::Data::new(server_addr_shared.clone()))
                 .app_data(web::Data::new(Config {
                     serve: serve.to_owned(),
                 }))
@@ -134,8 +152,25 @@ impl Voxelize {
             } else {
                 app.service(Files::new("/", serve).show_files_listing())
             }
-        })
-        .bind((addr.to_owned(), port.to_owned()))?;
+        });
+        let srv = srv.bind((addr.to_owned(), port.to_owned()))
+        .map_err(|e| {
+            if e.kind() == std::io::ErrorKind::AddrInUse {
+                warn!("Port {} is already in use. Another server instance may be running.", port);
+                warn!("To find and kill the process using port {}:", port);
+                #[cfg(target_os = "macos")]
+                warn!("  lsof -ti:{} | xargs kill -9", port);
+                #[cfg(target_os = "linux")]
+                warn!("  fuser -k {}/tcp", port);
+                #[cfg(target_os = "windows")]
+                warn!("  netstat -ano | findstr :{}", port);
+            }
+            e
+        })?;
+
+        // Only start the actor after bind succeeds
+        let server_addr = server.start();
+        *server_addr_shared.lock().unwrap() = Some(server_addr);
 
         info!("🍄  Voxelize backend running on http://{}:{}", addr, port);
 

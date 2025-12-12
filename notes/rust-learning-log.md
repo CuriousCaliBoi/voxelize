@@ -43,8 +43,8 @@ Track Rust concepts practiced inside `voxelize-brisingr`, with concrete evidence
 | ⬜ | Cursor: custom prompts & paths | Define scoped rules for other areas (todo) |
 
 ## Evidence Log (chronological)
+- 2025-12-11 — Added post-commit hook and Cursor rule to auto-update the Rust learning log and infer skill bumps from commit diffs. (commit 300d6cd5; files: .husky/post-commit, .cursor/rules/rust-learning-log/RULE.md, scripts/update-rust-learning-log.mjs)
 - 2025-12-11 — true dev mode (flag so packages are watched as well) (commit a72b5caa; files: package.json)
-- 2025-12-11 — Added post-commit hook and Cursor rule to auto-update the Rust learning log and infer skill bumps from commit diffs.
 - 2025-12-11 — Ran the Voxelize demo end-to-end (server + client). Added a small `double` helper in `examples/server/main.rs` to confirm server logs and basic function usage.
 - 2025-12-11 — Practiced control flow and ranges in `LimitedStage` (`examples/server/worlds/shared/stage.rs`): guarded island bounds, then filled voxels with nested `for` loops and registry lookups.
 
@@ -53,3 +53,5 @@ Track Rust concepts practiced inside `voxelize-brisingr`, with concrete evidence
 2) Adjust the status table rows that the change exercised.  
 3) Keep evidence specific (file paths, behavior observed).  
 4) When a topic feels solid, switch its status to ✅ and note why.
+
+---

@@ -219,7 +219,11 @@ impl Mesher {
                             .insert(level as u32, MeshProtocol { level, geometries });
                     }
 
-                    sender.send((chunk, r#type.clone())).unwrap();
+                    // Gracefully handle SendError during shutdown - receiver was dropped
+                    // This is expected when the mesher is being dropped while tasks are still running
+                    if let Err(_e) = sender.send((chunk, r#type.clone())) {
+                        return;
+                    }
                 });
         });
     }

@@ -8,6 +8,16 @@ export default {
   optimizeDeps: {
     force: true,
   },
+  server: {
+    fs: {
+      // Allow serving files from the workspace root and parent directory
+      // This fixes issues when pnpm workspace links resolve to different paths
+      allow: [
+        path.resolve(__dirname, "../.."), // voxelize-brisingr
+        path.resolve(__dirname, "../../.."), // /Users/princezuk0/projects
+      ],
+    },
+  },
   plugins: [
     glsl(),
     replaceCodePlugin({
