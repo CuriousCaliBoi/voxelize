@@ -21,8 +21,9 @@
     "lint": "eslint --fix --ext js,ts,tsx .",
     "docs": "cd docs && pnpm run start",
     "proto": "cd packages/protocol && pnpm run proto",
+    "rust-log:update": "node scripts/update-rust-learning-log.mjs",
     "preinstall": "npx only-allow pnpm",
-    "prepare": "husky",
+    "prepare": "husky install",
     "lint-staged": "lint-staged"
   },
   "devDependencies": {

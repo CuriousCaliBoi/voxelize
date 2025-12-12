@@ -1,4 +1,4 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
-scripts/update-rust-learning-log.sh
+node scripts/update-rust-learning-log.mjs || true
